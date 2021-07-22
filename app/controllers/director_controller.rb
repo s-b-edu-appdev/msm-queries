@@ -1,4 +1,4 @@
-class DirectorController < ActionController::Base
+class DirectorController < ApplicationController
   def director_list
     render({ :template => "misc_templates/director_list"})
   end
@@ -10,6 +10,8 @@ class DirectorController < ActionController::Base
   end
   def director_page
     @id = params.fetch("id")
+    @director_info = Director.where(["id = ?" , @id.to_s]).last
+    @movie_list = Movie.where(["director_id = ?" , @id.to_s])
     render({ :template => "misc_templates/director_page"})
   end
 end

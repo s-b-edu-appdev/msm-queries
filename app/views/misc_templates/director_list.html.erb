@@ -24,27 +24,27 @@
     </th>
   </tr>
 
-  <% Director.count.times do |i| %>
+  <% Director.all.each do |director| %>
   <tr>
     <td>
-      <%= Director.all.at(i-1).fetch("id") %>
+      <%= director.id %>
     </td>
 
     <td>
-      <img src=<%= Director.all.at(i-1).fetch("image") %> alt=pic />
+      <img src=<%= director.image %> alt=pic />
       
     </td>
 
     <td>
-      <%= Director.all.at(i-1).fetch("name") %>
+      <%= director.name %>
     </td>
 
     <td>
-      <%= Director.all.at(i-1).fetch("dob") %>
+      <%= director.dob %>
     </td>
 
     <td>
-      <a href= <%= "/directors/#{Director.all.at(i-1).fetch("id")}" %>>Show details</a>
+      <a href= <%= "/directors/#{director.id}" %>>Show details</a>
     </td>
   </tr>
   <% end %>

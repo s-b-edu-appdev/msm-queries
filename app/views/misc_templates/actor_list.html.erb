@@ -24,27 +24,27 @@
     </th>
   </tr>
 
-  <% Actor.count.times do |i| %>
+  <% Actor.all.each do |actor| %>
   <tr>
     <td>
-      <%= Actor.all.at(i-1).fetch("id") %>
+      <%= actor.id %>
     </td>
 
     <td>
-      <img src=<%= Actor.all.at(i-1).fetch("image") %> alt=pic />
+      <img src=<%= actor.image %> alt=pic />
       
     </td>
 
     <td>
-      <%= Actor.all.at(i-1).fetch("name") %>
+      <%= actor.name %>
     </td>
 
     <td>
-      <%= Actor.all.at(i-1).fetch("dob") %>
+      <%= actor.dob %>
     </td>
 
     <td>
-      <a href= <%= "/actors/#{Actor.all.at(i-1).fetch("id")}" %>>Show details</a>
+      <a href= <%= "/actors/#{actor.id}" %>>Show details</a>
     </td>
   </tr>
   <% end %>

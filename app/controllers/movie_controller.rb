@@ -1,4 +1,4 @@
-class MovieController < ActionController::Base
+class MovieController < ApplicationController
   def movie_list
     render({ :template => "misc_templates/movie_list"})
   end

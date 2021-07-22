@@ -29,31 +29,31 @@
     </th>
   </tr>
 
-  <% Movie.count.times do |i| %>
+  <% Movie.all.each do |movie| %>
   <tr>
     <td>
-      <%= Movie.all.at(i-1).fetch("id") %>
+      <%= movie.id %>
     </td>
 
     <td>
-      <img src=<%= Movie.all.at(i-1).fetch("image") %> alt=pic />
+      <img src=<%= movie.image %> alt=pic />
       
     </td>
 
     <td>
-      <%= Movie.all.at(i-1).fetch("title") %>
+      <%= movie.title %>
     </td>
 
     <td>
-      <%= Movie.all.at(i-1).fetch("year") %>
+      <%= movie.year %>
     </td>
 
     <td>
-      <%= Director.where("id = ?" , Movie.all.at(i-1).fetch("director_id").to_s).last.fetch("name")%>
+      <%= Director.where(["id = ?" , movie.director_id.to_s]).last.name%>
     </td>
 
     <td>
-      <a href= <%= "/movies/#{Movie.all.at(i-1).fetch("id")}" %>>Show details</a>
+      <a href= <%= "/movies/#{movie.id}" %>>Show details</a>
     </td>
   </tr>
   <% end %>

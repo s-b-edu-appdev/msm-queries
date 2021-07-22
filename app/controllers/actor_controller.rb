@@ -1,4 +1,4 @@
-class ActorController < ActionController::Base
+class ActorController < ApplicationController
   def actor_list
     render({ :template => "misc_templates/actor_list"})
   end
