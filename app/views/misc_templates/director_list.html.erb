@@ -31,7 +31,7 @@
     </td>
 
     <td>
-      <img src=<% Director.all.at(i-1).fetch("image") %> alt=<%= Director.all.at(i-1).fetch("image") %> />
+      <img src=<%= Director.all.at(i-1).fetch("image") %> alt=<%= Director.all.at(i-1).fetch("image") %> />
       
     </td>
 
@@ -44,7 +44,7 @@
     </td>
 
     <td>
-      <a href= <% "LINK GOES HERE" %>>Show details</a>
+      <a href= <%= "/directors/#{Director.all.at(i-1).fetch("id")}" %>>Show details</a>
     </td>
   </tr>
   <% end %>

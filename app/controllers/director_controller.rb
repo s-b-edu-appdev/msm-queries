@@ -8,4 +8,8 @@ class DirectorController < ActionController::Base
   def eldest_director
     render({ :template => "misc_templates/eldest_director"})
   end
+  def director_page
+    @id = params.fetch("id")
+    render({ :template => "misc_templates/director_page"})
+  end
 end
