@@ -4,6 +4,7 @@ class MovieController < ApplicationController
   end
   def movie_page
     @id = params.fetch("id")
+    @movie_info = Movie.where(["id = ?" , @id.to_s]).last
     render({ :template => "misc_templates/movie_page"})
   end
 end
