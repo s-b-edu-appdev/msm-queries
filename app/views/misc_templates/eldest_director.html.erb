@@ -3,7 +3,7 @@
 </h1>
 
 <p>
-The youngest director in our dataset right now is <a href=<% %>> <%= "Frank Capra" %></a>, born on <%= "May 18, 1897" %>
+The youngest director in our dataset right now is <a href= "/directors/<%= @id %>"> <%= @name %></a>, born on <%= @dob.strftime("%B %e, %Y") %>.
 </p>
 
 <p>

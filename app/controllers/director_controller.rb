@@ -3,9 +3,17 @@ class DirectorController < ApplicationController
     render({ :template => "misc_templates/director_list"})
   end
   def youngest_director
+    director_info = Director.order("dob").last
+    @name = director_info.name
+    @id = director_info.id
+    @dob = director_info.dob
     render({ :template => "misc_templates/youngest_director"})
   end
   def eldest_director
+    director_info = Director.order("dob").first
+    @name = director_info.name
+    @id = director_info.id
+    @dob = director_info.dob
     render({ :template => "misc_templates/eldest_director"})
   end
   def director_page

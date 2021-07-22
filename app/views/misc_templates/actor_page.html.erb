@@ -1,3 +1,114 @@
 <h1>
   Actor #<%= @id %> details
 </h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_actor/<%= @id %>" class="btn btn-block btn-outline-secondary">
+  Delete actor
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @actor_info.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @actor_info.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @actor_info.bio  %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%= @actor_info.image %> style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= @actor_info.created_at %>
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= @actor_info.updated_at %>
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+      Character name
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @character_list.all.each do |role| %>
+  <tr>
+    <td>
+      <%= Movie.where("id = ?" , role.movie_id.to_s).last.title%>
+    </td>
+
+    <td>
+      <%= Movie.where("id = ?" , role.movie_id.to_s).last.year%>      
+    </td>
+
+    <td>
+    <%# director %>
+    
+      <%= Director.where("id = ?" , Movie.where("id = ?" , role.movie_id.to_s).last.director_id.to_s).last.name %>
+    </td>
+
+    <td>
+      <%= role.name %>
+    </td>
+
+    <td>
+      <a href= <%= "/movies/#{Movie.where("id = ?" , role.movie_id.to_s).last.id}" %>>Show details</a>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
