@@ -1,3 +1,61 @@
 <h1>
   List of all movies
 </h1>
+
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% Movie.count.times do |i| %>
+  <tr>
+    <td>
+      <%= Movie.all.at(i-1).fetch("id") %>
+    </td>
+
+    <td>
+      <img src=<%= Movie.all.at(i-1).fetch("image") %> alt=pic />
+      
+    </td>
+
+    <td>
+      <%= Movie.all.at(i-1).fetch("title") %>
+    </td>
+
+    <td>
+      <%= Movie.all.at(i-1).fetch("year") %>
+    </td>
+
+    <td>
+      <%= Director.where("id = ?" , Movie.all.at(i-1).fetch("director_id").to_s).last.fetch("name")%>
+    </td>
+
+    <td>
+      <a href= <%= "/movies/#{Movie.all.at(i-1).fetch("id")}" %>>Show details</a>
+    </td>
+  </tr>
+  <% end %>
+
+  </table>

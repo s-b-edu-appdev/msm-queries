@@ -1,3 +1,52 @@
 <h1>
   List of all actors
 </h1>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Dob
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% Actor.count.times do |i| %>
+  <tr>
+    <td>
+      <%= Actor.all.at(i-1).fetch("id") %>
+    </td>
+
+    <td>
+      <img src=<%= Actor.all.at(i-1).fetch("image") %> alt=pic />
+      
+    </td>
+
+    <td>
+      <%= Actor.all.at(i-1).fetch("name") %>
+    </td>
+
+    <td>
+      <%= Actor.all.at(i-1).fetch("dob") %>
+    </td>
+
+    <td>
+      <a href= <%= "/actors/#{Actor.all.at(i-1).fetch("id")}" %>>Show details</a>
+    </td>
+  </tr>
+  <% end %>
+
+  </table>
