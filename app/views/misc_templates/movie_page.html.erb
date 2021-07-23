@@ -56,7 +56,7 @@
     Director
   </dt>
   <dd>
-    <%= Director.where(["id = ?" , @movie_info.director_id.to_s]).last.name%>
+    <%= Director.where({:id => @movie_info.director_id.to_s}).last.name%>
   </dd>
 
   <dt>

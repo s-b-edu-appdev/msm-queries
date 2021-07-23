@@ -49,7 +49,7 @@
     </td>
 
     <td>
-      <%= Director.where(["id = ?" , movie.director_id.to_s]).last.name%>
+      <%= Director.where({:id => movie.director_id.to_s}).last.name%>
     </td>
 
     <td>

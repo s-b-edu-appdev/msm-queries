@@ -88,17 +88,17 @@
   <% @character_list.all.each do |role| %>
   <tr>
     <td>
-      <%= Movie.where("id = ?" , role.movie_id.to_s).last.title%>
+      <%= Movie.where({:id => role.movie_id.to_s}).last.title%>
     </td>
 
     <td>
-      <%= Movie.where("id = ?" , role.movie_id.to_s).last.year%>      
+      <%= Movie.where({:id => role.movie_id.to_s}).last.year%>      
     </td>
 
     <td>
     <%# director %>
     
-      <%= Director.where("id = ?" , Movie.where("id = ?" , role.movie_id.to_s).last.director_id.to_s).last.name %>
+      <%= Director.where({:id => Movie.where({:id => role.movie_id.to_s}).last.director_id.to_s}).last.name %>
     </td>
 
     <td>
@@ -106,7 +106,7 @@
     </td>
 
     <td>
-      <a href= <%= "/movies/#{Movie.where("id = ?" , role.movie_id.to_s).last.id}" %>>Show details</a>
+      <a href= <%= "/movies/#{Movie.where({:id => role.movie_id.to_s}).last.id}" %>>Show details</a>
     </td>
   </tr>
   <% end %>
